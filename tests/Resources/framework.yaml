@@ -1,3 +1,0 @@
-framework:
-    cache:
-        default_pdo_provider: ~

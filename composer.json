@@ -17,21 +17,22 @@
     "ext-openssl": "*",
     "guzzlehttp/guzzle": "^7.0",
     "minishlink/web-push": "^6.0",
-    "symfony/http-kernel": "~4.0|~5.0"
+    "symfony/http-kernel": "^4.4|^5.0"
   },
   "require-dev": {
     "doctrine/dbal": "~2.5",
     "doctrine/common": "^2.0",
     "nyholm/symfony-bundle-test": "~1.4",
     "phpunit/phpunit": "^8.5",
-    "symfony/config": "~4.0",
-    "symfony/dependency-injection": "~4.0|~5.0",
-    "symfony/framework-bundle": "~4.0|~5.0",
-    "symfony/http-foundation": "~4.0|~5.0",
-    "symfony/routing": "~4.0|~5.0",
-    "symfony/security": "~4.0|~5.0",
-    "symfony/var-dumper": "~4.0|~5.0",
-    "symfony/yaml": "~4.0|~5.0",
+    "symfony/config": "^4.4|^5.0",
+    "symfony/dependency-injection": "^4.4|^5.0",
+    "symfony/framework-bundle": "^4.4|^5.0",
+    "symfony/http-foundation": "^4.4|^5.0",
+    "symfony/routing": "^4.4|^5.0",
+    "symfony/security": "^4.4|^5.0",
+    "symfony/serializer": "^4.4|5.0",
+    "symfony/var-dumper": "^4.4|^5.0",
+    "symfony/yaml": "^4.4|^5.0",
     "twig/twig": "~1.0|~2.0"
   },
   "autoload": {
