@@ -1,8 +1,8 @@
-[![Latest Stable Version](https://poser.pugx.org/bentools/webpush-bundle/v/stable)](https://packagist.org/packages/bentools/webpush-bundle)
-[![License](https://poser.pugx.org/bentools/webpush-bundle/license)](https://packagist.org/packages/bentools/webpush-bundle)
-[![Build Status](https://img.shields.io/travis/bpolaszek/webpush-bundle/master.svg?style=flat-square)](https://travis-ci.org/bpolaszek/webpush-bundle)
-[![Quality Score](https://img.shields.io/scrutinizer/g/bpolaszek/webpush-bundle.svg?style=flat-square)](https://scrutinizer-ci.com/g/bpolaszek/webpush-bundle)
-[![Total Downloads](https://poser.pugx.org/bentools/webpush-bundle/downloads)](https://packagist.org/packages/bentools/webpush-bundle)
+[![Latest Stable Version](https://poser.pugx.org/bentools/webpush-bundle/v/stable)](https://packagist.org/packages/frostiede/webpush-bundle)
+[![License](https://poser.pugx.org/frostiede/webpush-bundle/license)](https://packagist.org/packages/frostiede/webpush-bundle)
+[![Build Status](https://img.shields.io/travis/frostiede/webpush-bundle/master.svg?style=flat-square)](https://travis-ci.org/frostiede/webpush-bundle)
+[![Quality Score](https://img.shields.io/scrutinizer/g/frostiede/webpush-bundle.svg?style=flat-square)](https://scrutinizer-ci.com/g/frostiede/webpush-bundle)
+[![Total Downloads](https://poser.pugx.org/frostiede/webpush-bundle/downloads)](https://packagist.org/packages/frostiede/webpush-bundle)
 
 # Webpush Bundle
 
