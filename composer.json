@@ -21,6 +21,7 @@
   },
   "require-dev": {
     "doctrine/dbal": "~2.5",
+    "doctrine/common": "^2.0",
     "nyholm/symfony-bundle-test": "~1.4",
     "phpunit/phpunit": "^9.0",
     "symfony/config": "~4.0",
