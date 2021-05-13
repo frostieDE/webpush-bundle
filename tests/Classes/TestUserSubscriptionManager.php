@@ -4,23 +4,16 @@ namespace BenTools\WebPushBundle\Tests\Classes;
 
 use BenTools\WebPushBundle\Model\Subscription\UserSubscriptionInterface;
 use BenTools\WebPushBundle\Model\Subscription\UserSubscriptionManagerInterface;
-use Doctrine\Common\Persistence\ManagerRegistry;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 final class TestUserSubscriptionManager implements UserSubscriptionManagerInterface
 {
-    /**
-     * @var ManagerRegistry
-     */
-    private $doctrine;
+    private $subscriptions;
 
-    /**
-     * UserSubscriptionManager constructor.
-     * @param ManagerRegistry $doctrine
-     */
-    public function __construct(ManagerRegistry $doctrine)
-    {
-        $this->doctrine = $doctrine;
+    public function __construct() {
+        $this->subscriptions = new ArrayCollection();
     }
 
     /**
@@ -50,10 +43,9 @@ final class TestUserSubscriptionManager implements UserSubscriptionManagerInterf
      */
     public function getUserSubscription(UserInterface $user, string $subscriptionHash): ?UserSubscriptionInterface
     {
-        return $this->doctrine->getManagerForClass(TestUserSubscription::class)->getRepository(TestUserSubscription::class)->findOneBy([
-            'user'             => $user,
-            'subscriptionHash' => $subscriptionHash,
-        ]);
+        return $this->subscriptions->filter(function(UserSubscriptionInterface $subscription) use ($user, $subscriptionHash) {
+            return $subscription->getUser() === $user && $subscription->getSubscriptionHash() === $subscriptionHash;
+        })->first() ?: null;
     }
 
     /**
@@ -61,9 +53,9 @@ final class TestUserSubscriptionManager implements UserSubscriptionManagerInterf
      */
     public function findByUser(UserInterface $user): iterable
     {
-        return $this->doctrine->getManagerForClass(TestUserSubscription::class)->getRepository(TestUserSubscription::class)->findBy([
-            'user' => $user,
-        ]);
+        return $this->subscriptions->filter(function(UserSubscriptionInterface $subscription) use ($user) {
+            return $subscription->getUser() === $user;
+        });
     }
 
     /**
@@ -71,9 +63,9 @@ final class TestUserSubscriptionManager implements UserSubscriptionManagerInterf
      */
     public function findByHash(string $subscriptionHash): iterable
     {
-        return $this->doctrine->getManagerForClass(TestUserSubscription::class)->getRepository(TestUserSubscription::class)->findBy([
-            'subscriptionHash' => $subscriptionHash,
-        ]);
+        return $this->subscriptions->filter(function(UserSubscriptionInterface $subscription) use ($subscriptionHash) {
+            return $subscription->getSubscriptionHash() === $subscriptionHash;
+        });
     }
 
     /**
@@ -81,8 +73,7 @@ final class TestUserSubscriptionManager implements UserSubscriptionManagerInterf
      */
     public function save(UserSubscriptionInterface $userSubscription): void
     {
-        $this->doctrine->getManagerForClass(TestUserSubscription::class)->persist($userSubscription);
-        $this->doctrine->getManagerForClass(TestUserSubscription::class)->flush();
+        $this->subscriptions->add($userSubscription);
     }
 
     /**
@@ -90,7 +81,6 @@ final class TestUserSubscriptionManager implements UserSubscriptionManagerInterf
      */
     public function delete(UserSubscriptionInterface $userSubscription): void
     {
-        $this->doctrine->getManagerForClass(TestUserSubscription::class)->remove($userSubscription);
-        $this->doctrine->getManagerForClass(TestUserSubscription::class)->flush();
+        $this->subscriptions->removeElement($userSubscription);
     }
 }
